@@ -5,15 +5,13 @@ import {ChatService} from "Frontend/generated/endpoints.js";
 import {TextField} from "@hilla/react-components/TextField.js";
 import {Button} from "@hilla/react-components/Button.js";
 import {TextFieldChangeEvent} from "@vaadin/text-field/src/vaadin-text-field.js";
+import {MessageInputSubmitEvent} from '@vaadin/message-input/src/vaadin-message-input.js'
+import {MessageInput} from "@hilla/react-components/MessageInput.js";
 
 export function ChatView() {
   const [userName, setUserName] = useState('');
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState('');
-
-  function handleInput(e: TextFieldChangeEvent) {
-    setInput(e.target.value);
-  }
 
   function logIn() {
     setUserName(input);
@@ -31,9 +29,13 @@ export function ChatView() {
     };
   }, []);
 
-  async function sendMessage() {
-    await ChatService.send(input, userName);
+  async function sendMessage(e: MessageInputSubmitEvent) {
+    await ChatService.send(e.detail.value, userName);
     setInput('');
+  }
+
+  function handleInput(e: TextFieldChangeEvent) {
+    setInput(e.target.value);
   }
 
   if (!userName) {
@@ -50,10 +52,7 @@ export function ChatView() {
   return (
     <div className="flex flex-col h-full">
       <MessageList className="flex-grow" items={messages}/>
-      <div className="flex gap-m p-m">
-        <TextField value={input} className="flex-grow" onChange={handleInput}/>
-        <Button theme="primary" onClick={sendMessage}>Send</Button>
-      </div>
+      <MessageInput onSubmit={sendMessage}/>
     </div>
   )
 }
