@@ -3,7 +3,7 @@ import {MessageInputSubmitEvent} from '@vaadin/message-input/src/vaadin-message-
 
 export function ChatView() {
   return (
-    <div>
+    <div className="p-m box-border h-full">
       <h1>Hello, world!</h1>
     </div>
   );
