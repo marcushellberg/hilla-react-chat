@@ -1,14 +1,12 @@
-import {TextFieldChangeEvent} from '@vaadin/text-field/src/vaadin-text-field.js';
-import {MessageInputSubmitEvent} from '@vaadin/message-input/src/vaadin-message-input.js';
-import {useEffect, useState} from 'react';
+import { TextFieldChangeEvent } from '@vaadin/text-field/src/vaadin-text-field.js';
+import { MessageInputSubmitEvent } from '@vaadin/message-input/src/vaadin-message-input.js';
+import { useEffect, useState } from 'react';
 import Message from 'Frontend/generated/com/example/application/endpoints/ChatService/Message';
-import {ChatService} from 'Frontend/generated/endpoints.js';
-import {MessageList} from '@hilla/react-components/MessageList.js';
-import {Grid} from '@hilla/react-components/Grid.js';
-import {GridColumn} from '@hilla/react-components/GridColumn.js';
-import {MessageInput} from '@hilla/react-components/MessageInput.js';
-import {TextField} from '@hilla/react-components/TextField.js';
-import {Button} from '@hilla/react-components/Button.js';
+import { ChatService } from 'Frontend/generated/endpoints.js';
+import { MessageList } from '@hilla/react-components/MessageList.js';
+import { MessageInput } from '@hilla/react-components/MessageInput.js';
+import { TextField } from '@hilla/react-components/TextField.js';
+import { Button } from '@hilla/react-components/Button.js';
 
 export function ChatView() {
   const [messages, setMessages] = useState<Message[]>([]);
@@ -55,8 +53,8 @@ export function ChatView() {
 
   return (
     <div className="flex flex-col p-m box-border h-full">
-      <MessageList items={messages} className="flex-grow"/>
-      <MessageInput onSubmit={sendMessage}/>
+      <MessageList items={messages} className="flex-grow" />
+      <MessageInput onSubmit={sendMessage} />
     </div>
   );
 }
