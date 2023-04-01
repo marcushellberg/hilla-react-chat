@@ -9,6 +9,13 @@ and [Hilla] https://hilla.dev/.
 
 - Java 17
 
+Using the included `ChatGPTService` requires that you have
+your [OpenAI API key](https://platform.openai.com/account/api-keys) as an environment variable:
+
+```
+OPENAI_API_KEY=your-key-here
+```
+
 ## Running the app
 
 You can run the app in development mode with the included Maven wrapper.
