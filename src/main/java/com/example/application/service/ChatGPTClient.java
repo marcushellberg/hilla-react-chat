@@ -2,6 +2,7 @@ package com.example.application.service;
 
 import com.example.application.service.data.ChatGPTResponse;
 import com.example.application.service.data.Message;
+import org.springframework.aot.hint.annotation.RegisterReflectionForBinding;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
@@ -23,6 +24,7 @@ public class ChatGPTClient {
                 .build();
     }
 
+    @RegisterReflectionForBinding(ChatGPTResponse.class)
     public Mono<String> generateCompletion(List<Message> messages) {
         return webClient.post()
                 .header("Authorization", "Bearer " + openAiApiKey)
