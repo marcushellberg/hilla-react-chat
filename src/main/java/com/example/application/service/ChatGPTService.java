@@ -7,6 +7,9 @@ import reactor.core.publisher.Mono;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Note: This demo only supports one chat per server instance.
+ */
 @Service
 public class ChatGPTService {
 
